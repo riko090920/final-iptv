@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers - IPTV Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>IPTV Reseller Portal</h1>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/customers">Customers</a>
+      <a href="/streams">Streams</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+  
+  <main>
+    <h2>Customers Management</h2>
+    
+    <div class="add-form">
+      <h3>Add New Customer</h3>
+      <form action="/customers" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="macAddress" placeholder="MAC Address" required>
+        <input type="date" name="expiryDate" required>
+        <select name="status" required>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+          <option value="suspended">Suspended</option>
+        </select>
+        <button type="submit">Add Customer</button>
+      </form>
+    </div>
+    
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>MAC Address</th>
+            <th>Expiry Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% customers.forEach(customer => { %>
+            <tr>
+              <td><%= customer.name %></td>
+              <td><%= customer.email %></td>
+              <td><%= customer.macAddress %></td>
+              <td><%= customer.expiryDate.toLocaleDateString() %></td>
+              <td><%= customer.status %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>
