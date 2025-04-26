@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - IPTV Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>IPTV Reseller Portal</h1>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/customers">Customers</a>
+      <a href="/streams">Streams</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+  
+  <main>
+    <h2>Welcome, <%= user.username %></h2>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <h3>Customers</h3>
+        <p><%= customersCount %></p>
+      </div>
+      <div class="stat-card">
+        <h3>Streams</h3>
+        <p><%= streamsCount %></p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
