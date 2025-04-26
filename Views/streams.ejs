@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Streams - IPTV Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>IPTV Reseller Portal</h1>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/customers">Customers</a>
+      <a href="/streams">Streams</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+  
+  <main>
+    <h2>Streams Management</h2>
+    
+    <div class="add-form">
+      <h3>Add New Stream</h3>
+      <form action="/streams" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Channel Name" required>
+        <input type="text" name="category" placeholder="Category" required>
+        <input type="text" name="url" placeholder="Stream URL" required>
+        <input type="file" name="logo" accept="image/*">
+        <button type="submit">Add Stream</button>
+      </form>
+    </div>
+    
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Logo</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>URL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% streams.forEach(stream => { %>
+            <tr>
+              <td>
+                <% if (stream.logo) { %>
+                  <img src="<%= stream.logo %>" alt="<%= stream.name %>" class="stream-logo">
+                <% } %>
+              </td>
+              <td><%= stream.name %></td>
+              <td><%= stream.category %></td>
+              <td class="url-cell"><%= stream.url %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>
